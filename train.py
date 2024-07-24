@@ -43,3 +43,5 @@ engine = MonoconEngine(cfg)
 # Start Training from Scratch
 # Output files will be saved to 'cfg.OUTPUT_DIR'.
 engine.train()
+
+torch.save(engine.state_dict(), 'base_monocon_model_no_quant.pt')
