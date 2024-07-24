@@ -196,24 +196,11 @@ class BaseEngine:
         
         
         # Load Engine Attributes
-        attrs = engine_dict['engine_attrs']
-        for attr_k, attr_v in attrs.items():
-            setattr(self, attr_k, attr_v)
         
             
-        state_dict = engine_dict['state_dict']
         
         # Load Model
-        if (state_dict['model'] is not None) and (self.model is not None):
-            self.model.load_state_dict(state_dict['model'])
-        
-        # Load Optimizer
-        if (state_dict['optimizer'] is not None) and (self.optimizer is not None):
-            self.optimizer.load_state_dict(state_dict['optimizer'])
-        
-        # Load Scheduler
-        if (state_dict['scheduler'] is not None) and (self.scheduler is not None):
-            self.scheduler.load_state_dict(state_dict['scheduler'])
+        self.model.load_state_dict(engine_dict)
         
         if verbose:
             tprint(f"Checkpoint is loaded from '{ckpt_file}'.")
